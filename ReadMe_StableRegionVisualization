@@ -1,0 +1,38 @@
+Stable Region Extreme Event Propagation Analysis
+Overview
+Python script for analyzing the spatial propagation of extreme precipitation events from the atmospheric stability zone (3500–4000m) to other elevations in the Northwestern Himalayas. Determines whether extreme events in the stable region co-occur with extreme events elsewhere.
+Purpose
+Investigates whether the 3500–4000m stability zone acts as a source/trigger region for extreme precipitation events that propagate to lower or higher elevations on the same date.
+Key Functions
+analyze_stable_region_events()
+	•	Loads main meteorological dataset and stable region event catalog
+	•	Calculates 95th and 99th percentile precipitation thresholds
+	•	For each extreme event date in the stable region, identifies concurrent extremes outside 3500–4000m
+	•	Outputs summary statistics and probability of concurrent extremes
+plot_events()
+	•	Generates Cartopy-based maps for each event date
+	•	Visualizes spatial distribution: stable region events (red stars), 99th percentile outside (yellow), 95th percentile outside (orange)
+Requirements
+
+
+pandas
+numpy
+matplotlib
+cartopy
+Usage
+
+
+python
+python StableRegionVisualization_V2.py
+Inputs:
+	•	AllDataAllFeature+Elevation.csv – Full meteorological dataset
+	•	extremeEventsSR.csv – Pre-identified extreme events in stable region (must contain Date, Longitude, Latitude, Elevation, Precipitation, Percentile columns)
+Output
+	•	concurrent_extreme_events_analysis.csv – Summary table with concurrent event counts per date
+	•	stable_region_event_*.png – Maps for each event date (when plotting enabled)
+Key Metrics
+	•	Probability of concurrent extreme events outside stable region
+	•	Count of 95th/99th percentile events by elevation zone
+	•	Spatial patterns of event propagation
+Notes
+Uncomment plot_events() call at bottom of script to generate visualization maps.
